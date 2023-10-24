@@ -57,6 +57,7 @@ static const Layout layouts[] = {
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
+#define MYSHCMD(cmd) SHCMD("/usr/local/share/dwm/sh/" cmd)
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
@@ -102,6 +103,8 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+    { 0,                            XK_Print,  spawn,          MYSHCMD("dwm-screenshot") },
+    { ShiftMask,                    XK_Print,  spawn,          MYSHCMD("dwm-screenshot-box") },
     { 0,         XF86XK_AudioRaiseVolume,      spawn,          {.v = up_vol } },
     { 0,         XF86XK_AudioLowerVolume,      spawn,          {.v = down_vol } },
     { 0,         XF86XK_AudioMute,             spawn,          {.v = mute_vol } },
