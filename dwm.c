@@ -57,6 +57,8 @@
 #define TAGMASK                 ((1 << LENGTH(tags)) - 1)
 #define TEXTW(X)                (drw_fontset_getwidth(drw, (X)) + lrpad)
 
+#define EXIT_RESTART 69
+
 /* enums */
 enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
 enum { SchemeNorm, SchemeSel }; /* color schemes */
@@ -267,6 +269,7 @@ static Display *dpy;
 static Drw *drw;
 static Monitor *mons, *selmon;
 static Window root, wmcheckwin;
+static int exit_status = EXIT_SUCCESS;
 
 /* configuration, allows nested code to access above variables */
 #include "config.h"
@@ -1259,6 +1262,7 @@ void
 quit(const Arg *arg)
 {
 	running = 0;
+    exit_status = arg->i;
 }
 
 Monitor *
@@ -2161,5 +2165,5 @@ main(int argc, char *argv[])
 	run();
 	cleanup();
 	XCloseDisplay(dpy);
-	return EXIT_SUCCESS;
+	return exit_status;
 }

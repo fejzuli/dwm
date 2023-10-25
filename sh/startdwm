@@ -1,0 +1,7 @@
+#!/bin/sh
+mkdir -p "$HOME/.cache/dwm"
+(exit 69)
+while [ "$?" = "69" ]
+do
+    dwm 1> ~/.cache/dwm/dwm.log 2> ~/.cache/dwm/error.log
+done

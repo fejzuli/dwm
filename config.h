@@ -102,7 +102,8 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_q,      quit,           {.i = EXIT_SUCCESS} },
+    { MODKEY|ShiftMask,             XK_r,      quit,           {.i = EXIT_RESTART} },
     { 0,                            XK_Print,  spawn,          MYSHCMD("dwm-screenshot") },
     { ShiftMask,                    XK_Print,  spawn,          MYSHCMD("dwm-screenshot-box") },
     { 0,         XF86XK_AudioRaiseVolume,      spawn,          {.v = up_vol } },
