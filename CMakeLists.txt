@@ -36,4 +36,8 @@ target_compile_options(dwm PRIVATE
 install(TARGETS dwm DESTINATION bin)
 install(PROGRAMS sh/startdwm DESTINATION bin)
 install(FILES dwm.1 DESTINATION share/man/man1)
-install(PROGRAMS sh/dwm-screenshot sh/dwm-screenshot-box DESTINATION share/dwm/sh)
+install(PROGRAMS
+        sh/dwm-screenshot sh/dwm-screenshot-box
+        sh/dwm-clock
+        DESTINATION share/dwm
+        )
