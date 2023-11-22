@@ -236,6 +236,7 @@ static int xerror(Display *dpy, XErrorEvent *ee);
 static int xerrordummy(Display *dpy, XErrorEvent *ee);
 static int xerrorstart(Display *dpy, XErrorEvent *ee);
 static void zoom(const Arg *arg);
+static void pipwin(const Arg *arg);
 
 /* variables */
 static const char broken[] = "broken";
@@ -2150,6 +2151,23 @@ zoom(const Arg *arg)
 	if (c == nexttiled(selmon->clients) && !(c = nexttiled(c->next)))
 		return;
 	pop(c);
+}
+
+void
+pipwin(const Arg *arg)
+{
+	if (!selmon->sel)
+		return;
+	if (selmon->sel->isfullscreen) /* no support for fullscreen windows */
+		return;
+	selmon->sel->isfloating = True;
+	resize(selmon->sel, selmon->mw - 388, 108, 384, 216, 0);
+
+	if (~0 & TAGMASK) { /* move to all tags */
+		selmon->sel->tags = ~0 & TAGMASK;
+		focus(NULL);
+	}
+	arrange(selmon);
 }
 
 int

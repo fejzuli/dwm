@@ -110,6 +110,7 @@ static const Key keys[] = {
     { 0,         XF86XK_AudioRaiseVolume,      spawn,          {.v = up_vol } },
     { 0,         XF86XK_AudioLowerVolume,      spawn,          {.v = down_vol } },
     { 0,         XF86XK_AudioMute,             spawn,          {.v = mute_vol } },
+	{ MODKEY,                       XK_bracketright, pipwin,   {0} },
 };
 
 /* button definitions */
